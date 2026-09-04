@@ -1,5 +1,6 @@
 package com.example.appdesergio;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -54,14 +55,11 @@ public class MainActivity extends AppCompatActivity {
             Random random= new Random();
             int r = random.nextInt(max-min)+min; //[0,max]
             tv.setText(Integer.toString(r));
-            b.setText("Plin");
 
+            Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+            intent.putExtra("valor",r);
+            startActivity(intent);
 
-            int valor = (random.nextInt(max-min)) + min;
         });
-
-
-
-
     }
 }
