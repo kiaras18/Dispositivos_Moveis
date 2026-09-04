@@ -15,10 +15,12 @@ import androidx.core.view.WindowInsetsCompat;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
+
+    Button b;
+    EditText edmin, edmax;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
@@ -28,24 +30,34 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        Button b=findViewById(R.id.Button);
+        b=findViewById(R.id.Button);
         TextView tv=findViewById(R.id.TextView);
-        EditText edmin= findViewById(R.id.edmin);
-        EditText edmax= findViewById(R.id.edmax);
+        edmin= findViewById(R.id.edmin);
+        edmax= findViewById(R.id.edmax);
 
         b.setOnClickListener(view -> {
             //contador = (int)(Math.random() *100);
-            int max =Integer.parseInt(edmax.getText().toString());
-            int min =Integer.parseInt(edmin.getText().toString());
+            String maxst =edmax.getText().toString();
+            String minst =edmin.getText().toString();
+
+            if(minst.isEmpty()){
+                edmin.setError("Informe o valor mínimo.");
+                return;
+            }
+            if(maxst.isEmpty()){
+                edmax.setError("Informe o valor máximo");
+                return;
+            }
+            int min = Integer.parseInt(minst);
+            int max = Integer.parseInt(maxst);
 
             Random random= new Random();
+            int r = random.nextInt(max-min)+min; //[0,max]
+            tv.setText(Integer.toString(r));
+            b.setText("Plin");
+
+
             int valor = (random.nextInt(max-min)) + min;
-
-
-
-            tv.setText(Integer.toString(valor));
-
-
         });
 
 
