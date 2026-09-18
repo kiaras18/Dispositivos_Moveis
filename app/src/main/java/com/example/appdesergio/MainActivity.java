@@ -31,35 +31,48 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        b=findViewById(R.id.Button);
-        TextView tv=findViewById(R.id.TextView);
-        edmin= findViewById(R.id.edmin);
-        edmax= findViewById(R.id.edmax);
-
-        b.setOnClickListener(view -> {
-            //contador = (int)(Math.random() *100);
-            String maxst =edmax.getText().toString();
-            String minst =edmin.getText().toString();
-
-            if(minst.isEmpty()){
-                edmin.setError("Informe o valor mínimo.");
-                return;
-            }
-            if(maxst.isEmpty()){
-                edmax.setError("Informe o valor máximo");
-                return;
-            }
-            int min = Integer.parseInt(minst);
-            int max = Integer.parseInt(maxst);
-
-            Random random= new Random();
-            int r = random.nextInt(max-min)+min; //[0,max]
-            tv.setText(Integer.toString(r));
-
-            Intent intent = new Intent(MainActivity.this, MainActivity2.class);
-            intent.putExtra("valor",r);
-            startActivity(intent);
-
+//        b=findViewById(R.id.btnAnterior);
+//        TextView tv=findViewById(R.id.TextView);
+//        edmin= findViewById(R.id.edmin);
+//        edmax= findViewById(R.id.edmax);
+//
+//        b.setOnClickListener(view -> {
+//            //contador = (int)(Math.random() *100);
+//            String maxst =edmax.getText().toString();
+//            String minst =edmin.getText().toString();
+//
+//            if(minst.isEmpty()){
+//                edmin.setError("Informe o valor mínimo.");
+//                return;
+//            }
+//            if(maxst.isEmpty()){
+//                edmax.setError("Informe o valor máximo");
+//                return;
+//            }
+//            int min = Integer.parseInt(minst);
+//            int max = Integer.parseInt(maxst);
+//
+//            Random random= new Random();
+//            int r = random.nextInt(max-min)+min; //[0,max]
+//            tv.setText(Integer.toString(r));
+//
+//            Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+//            intent.putExtra("valor",r);
+//            startActivity(intent);
+//
+//        });
+        Intereger[] imagens=new Intereger[]{
+                R.drawble.cachorro,
+                R.drawble.garden,
+                R.drawble.happy,
+                R.drawble.patinho,
+                R.drawble.porquinho
+        };
+        Button botaoVoltar, botaoAvancar;
+        botaoVoltar=findViewById(R.id.btnAnterior);
+        botaoAvancar=findViewById(R.id.btnProximo);
+        botaoAvancar.setOnClickListener(View v-->{
+            imageView.setImageResource(imagens[posicao]);
         });
     }
 }
