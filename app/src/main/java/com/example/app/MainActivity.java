@@ -30,13 +30,14 @@ public class MainActivity extends AppCompatActivity {
         EditText edmin = findViewById(R.id.edmin);
         EditText edmax = findViewById(R.id.edmax);
 
-        tv.setText(0);
+        tv.setText(R.string.valorinicial);
+
 
         b.setOnClickListener(view -> {
             int min = Integer.parseInt(edmin.getText().toString());
             int max = Integer.parseInt(edmax.getText().toString());
             Random random = new Random();
-            int valor =random.nextInt();
+            int valor =random.nextInt(max-min)+min;
             tv.setText(Integer.toString(valor));
         });
     }
