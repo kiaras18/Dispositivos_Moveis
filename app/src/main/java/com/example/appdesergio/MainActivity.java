@@ -2,8 +2,10 @@ package com.example.appdesergio;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
@@ -13,66 +15,47 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import java.util.Random;
+
 
 public class MainActivity extends AppCompatActivity {
-
-    Button b;
+    Button btnProximo, btnVoltar;
     EditText edmin, edmax;
 
+    ImageView imageView;
+
+    Integer [] imagens=new Integer[]{
+            R.drawable.cachorro,
+            R.drawable.gardem,
+            R.drawable.happy,
+            R.drawable.patinho,
+            R.drawable.porquinho
+
+    };
+    int posicao=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
+
+        btnVoltar=findViewById(R.id.btnAnterior);
+        btnProximo=findViewById(R.id.btnProximo);
+        imageView=findViewById(R.id.imageView);
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
-//        b=findViewById(R.id.btnAnterior);
-//        TextView tv=findViewById(R.id.TextView);
-//        edmin= findViewById(R.id.edmin);
-//        edmax= findViewById(R.id.edmax);
-//
-//        b.setOnClickListener(view -> {
-//            //contador = (int)(Math.random() *100);
-//            String maxst =edmax.getText().toString();
-//            String minst =edmin.getText().toString();
-//
-//            if(minst.isEmpty()){
-//                edmin.setError("Informe o valor mínimo.");
-//                return;
-//            }
-//            if(maxst.isEmpty()){
-//                edmax.setError("Informe o valor máximo");
-//                return;
-//            }
-//            int min = Integer.parseInt(minst);
-//            int max = Integer.parseInt(maxst);
-//
-//            Random random= new Random();
-//            int r = random.nextInt(max-min)+min; //[0,max]
-//            tv.setText(Integer.toString(r));
-//
-//            Intent intent = new Intent(MainActivity.this, MainActivity2.class);
-//            intent.putExtra("valor",r);
-//            startActivity(intent);
-//
-//        });
-        Intereger[] imagens=new Intereger[]{
-                R.drawble.cachorro,
-                R.drawble.garden,
-                R.drawble.happy,
-                R.drawble.patinho,
-                R.drawble.porquinho
-        };
-        Button botaoVoltar, botaoAvancar;
-        botaoVoltar=findViewById(R.id.btnAnterior);
-        botaoAvancar=findViewById(R.id.btnProximo);
-        botaoAvancar.setOnClickListener(View v-->{
+        btnProximo.setOnClickListener(v ->{
+            if(posicao == imagens.length-1) posicao =0;
             imageView.setImageResource(imagens[posicao]);
+            posicao++;
+        });
+        btnVoltar.setOnClickListener(v ->{
+            imageView.setImageResource(imagens[posicao]);
+            posicao--;
+            if(posicao < 0) posicao = imagens.length -1;
         });
     }
 }
