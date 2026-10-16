@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">App_Exemplo</string>
+    <string name="app_name">Cadastro de Notas</string>
+    <string name="hint_titulo">Título da Nota</string>
+    <string name="hint_texto">Texto da Nota</string>
+    <string name="btn_salvar">Salvar Nota</string>
+    <string name="msg_preencha_campos">Preencha o título ou o texto da nota</string>
+    <string name="msg_salvo_sucesso">Nota salva com sucesso!</string>
+    <string name="msg_erro_salvar">Erro ao salvar nota</string>
 </resources>
